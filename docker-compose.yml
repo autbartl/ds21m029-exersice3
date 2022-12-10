@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: jupyter/datascience-notebook:latest
+    environment:
+      JUPYTER_ENABLE_LAB: "yes"
+    command: "start-notebook.sh --NotebookApp.token='' --NotebookApp.password=''"
+    volumes:
+      - ./:/home/jovyan/work
+    ports:
+      - 8888:8888
+      - 8000:8000
+      - 8001:8001
+    container_name: mercury-dashboard-bartl
